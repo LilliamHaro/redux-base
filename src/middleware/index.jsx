@@ -1,7 +1,7 @@
 // paso 8
 // A Redux middleware is a function that is able to intercept, and act accordingly, our actions, before they reach the reducer
 // Son funciones para mantener la logica fuera de lo componentes
-// nside the middleware you can access getState and dispatch,
+// inside the middleware you can access getState and dispatch,
 
 import { ADD_ARTICLE } from "../constants/action-types";
 import '../index.css';
@@ -26,7 +26,7 @@ export function forbiddenWordsMiddleware({ dispatch }) {
   };
 }
 
-// pasos siguientes de modificacion 
+// pasos siguientes de modificacion  - paso 9
 
 // store --> para el uso de redux dev tolls // const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // store --> crear el store aumentando el Middleware

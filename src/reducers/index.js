@@ -9,7 +9,10 @@ import { ADD_ARTICLE } from '../constants/action-types';
 
 // el mero estado 
 const initialState = {
-  articles: []
+  articles: [],
+  // paso 12
+  // agreagar un nuevo action para el uso de l api
+  remoteArticles: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -18,6 +21,14 @@ function rootReducer(state = initialState, action) {
   if (action.type === ADD_ARTICLE) {
     return Object.assign({}, state, {
       articles: state.articles.concat(action.payload)
+    });
+  }
+
+  // paso 12
+  //  // agreagar un nuevo bloque de accion para la nueva action para el uso de l api
+  if (action.type === "DATA_LOADED") {
+    return Object.assign({}, state, {
+      remoteArticles: state.remoteArticles.concat(action.payload)
     });
   }
 
