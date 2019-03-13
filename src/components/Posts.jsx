@@ -32,7 +32,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(
-    mapStateToProps,
-    { getData }
-)(Post);
+export default connect(mapStateToProps,{ getData })(Post);

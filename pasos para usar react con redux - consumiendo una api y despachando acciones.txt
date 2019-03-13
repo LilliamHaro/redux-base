@@ -1,0 +1,138 @@
+paso 1(action types)
+-crear carpetas de contantes
+-declarar consates (los nombres de las actions types) y exportarlas (ejm: export const ADD_ARTICLE = "ADD_ARTICLE";)
+
+paso 2(reducer)
+-importar actions types
+- crear el estado
+-crear la funcion pura que va a ser el reducer con el estado y el actio type
+-if else con los action types 
+
+paso 3(store)
+-crear el store con el reducer (const store = createStore(rootReducer))
+
+paso 4(provider)
+-importar el provider y el store en el index.js principal
+- envolver el app con el provider con el store como prop 
+( 
+  <Provider store={store}>
+    <App />
+  </Provider>
+)
+
+paso 5(conectando componentes a redux)
+-importar connect
+-usar la funcion mapStaeteToProps para proporcionar los datos del store al componente
+-crear el componentnt con lo retornado por la funcion mapstatetoporps como parametro
+-armar el componete como siempre se hace
+-conectar el componente a redux (const List = connect(mapStateToProps)(ConnectedList);)
+-exportar list
+
+paso 6(actions creators)
+
+-importar action type
+-crear action creators functiones que retornar reducs actions y exportarla para hacer el dispñathc al store
+
+
+paso 7(crear componente que descadena el evento que ocasiona el action)
+-importar connect
+-importar el action creator que se va a usar 
+- usar la function map dispatchto porps con dispatch como parametro(It connects redux actions to react props.)
+-en la function retornar el actiorn creator modificanfo el dato en el store
+ ejm:
+return {
+        addArticle: article => dispatch(addArticle(article))
+    };
+
+- crear el componente de formulario con normalidad con su propio estado y los handleevents usando los prps
+-conectar el componente a redux, el primer partametro deb ser nulo (const Form = connect(null, mapDispatchToProps)(ConnectedForm))
+
+paso 8(middleware)
+-a function that is able to intercept, and act accordingly, our actions, before they reach the reducer)
+-importar action types
+-crear funcion con dispatch como parametro y usando next, action, los action type con respectivo bloque if
+
+
+paso 9(modificar el store aumentando el middleware)
+
+-para usar el redux dev tols agregar arriba del store 
+const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+-aunmetar el midleware al store 
+// const store = createStore(rootReducer,storeEnhancers(applyMiddleware(forbiddenWordsMiddleware))
+
+
+paso 10(consumo de api y redux-thunk)
+-redux-thunk para retornar funciones de action creator (normalmente solo devuelven objetos)  npm i redux-thunk --save-dev
+- en actions crear function con la llamada a la api y haciendo dispatch con la data 
+export function getData() {
+  return function(dispatch) {
+    return fetch("https://jsonplaceholder.typicode.com/posts")
+      .then(response => response.json())
+      .then(json => {
+        dispatch({ type: DATA_LOADED, payload: json });
+        console.log('hoa')
+      });
+  };
+}
+
+paso 11(load the middleware(react-thunk) en el store)
+
+- aumentar thunk en el store 
+const store = createStore(rootReducer,
+storeEnhancers(applyMiddleware(forbiddenWordsMiddleware, thunk))
+
+paso 12
+
+-agregar un nuevo bloque if rn rl reducer 
+ if (action.type === "DATA_LOADED") {
+    return Object.assign({}, state, {
+      remoteArticles: state.remoteArticles.concat(action.payload)
+    });
+  }
+
+paso 13(componente que consumira la dat del api)
+
+--------------------------------------------------------------------------------------------------------------------------------
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getData } from "../actions/index";
+
+export class Post extends Component {
+    constructor() {
+        super();
+    }
+    componentDidMount() {
+        this.props.getData();
+    }
+    render() {
+        return (
+            <ul className="list-group list-group-flush">
+                {this.props.articles.map(el => (
+                    <li className="list-group-item" key={el.id}>
+                        {el.title}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        articles: state.remoteArticles.slice(0, 10)
+    };
+}
+
+export default connect(mapStateToProps,{ getData })(Post);
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+	
+
+
+
+

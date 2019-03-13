@@ -20,3 +20,6 @@ ReactDOM.render(
 );
 
 serviceWorker.unregister();
+
+// paso 5
+// al componente list

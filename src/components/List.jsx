@@ -3,6 +3,7 @@
 
 import React from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 
 //mapStateToProps --> función para proporcionar los datos del store al componente,
@@ -27,3 +28,7 @@ const ConnectedList = ({ articles }) => (
 const List = connect(mapStateToProps)(ConnectedList);
 
 export default List;
+
+
+// paso6
+//  en la carpeta actions

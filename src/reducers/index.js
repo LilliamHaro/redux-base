@@ -1,9 +1,10 @@
 
 //pas 2
 //crear el estado inicial (de aqui viene toda la data)
-// importar los actions
-//crear la funcio pura? con el estado y el action que retornara el estado
-// hacer el if o el switch dentro de la funcion con los bloques de codigo dependiendo de la action
+// importar los actions types
+// crear el reducer (función pura que toma el estado anterior y una acción, y devuelve en nuevo estado)
+//crear la funcio pura? con el estado y el action que retornara el nuevo estado
+// hacer el if o el switch dentro de la funcion con los bloques de codigo dependiendo del action type
 
 import { ADD_ARTICLE } from '../constants/action-types';
 
@@ -16,7 +17,6 @@ const initialState = {
 };
 
 function rootReducer(state = initialState, action) {
-
   //si hay una accion que conicide el if se ejecuta 
   if (action.type === ADD_ARTICLE) {
     return Object.assign({}, state, {
@@ -24,6 +24,10 @@ function rootReducer(state = initialState, action) {
     });
   }
 
+  // paso 3
+  // store
+
+  
   // paso 12
   //  // agreagar un nuevo bloque de accion para la nueva action para el uso de l api
   if (action.type === "DATA_LOADED") {

@@ -1,20 +1,25 @@
 // paso 6
 //importar el nombre de la accion
+
+import { ADD_ARTICLE, DATA_LOADED } from '../constants/action-types';
+
 //crear un funcion retornando la accion(type) y el payload(data)
-import { ADD_ARTICLE } from "../constants/action-types";
-
-
 //action creators --> plain JavaScript function in charge for returning Redux actions.
-
 // actiosn son objetos planos
 export function addArticle(payload) {
   return { type: ADD_ARTICLE, payload };
 }
 
+// paso 7
+// componente form
+
+
 // paso 10
 // llamadas a apis en action creator con una funcion nhormal - nop no funciona
 // Redux is expecting objects as actions but we’re trying to return a Promise
 
+
+//prueba funcionara?
 // export function getData() {
 //   return fetch("https://jsonplaceholder.typicode.com/posts")
 //     .then(response => response.json())
@@ -34,7 +39,7 @@ export function getData() {
     return fetch("https://jsonplaceholder.typicode.com/posts")
       .then(response => response.json())
       .then(json => {
-        dispatch({ type: "DATA_LOADED", payload: json });
+        dispatch({ type: DATA_LOADED, payload: json });
         console.log('hoa')
       });
   };

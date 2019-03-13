@@ -12,9 +12,18 @@ import thunk from "redux-thunk";
 const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(rootReducer,
+
+  // paso 4
+ //provider
+
+
   //paso 9
   //aplicando los Middleware
   // storeEnhancers(applyMiddleware(forbiddenWordsMiddleware))
+
+
+  // paso 10
+  // actions
 
   // paso 11
   // para la llamada de api desde el action load the middleware(redux-thunk) en el store:
@@ -26,3 +35,5 @@ const store = createStore(rootReducer,
 
   );
 export default store;
+
+

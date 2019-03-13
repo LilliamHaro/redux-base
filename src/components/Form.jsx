@@ -59,3 +59,7 @@ class ConnectedForm extends Component {
 const Form = connect(null, mapDispatchToProps)(ConnectedForm);
 
 export default Form;
+
+// paso 8
+// validar datos antes de que lleguen al reducer
+// middleware
