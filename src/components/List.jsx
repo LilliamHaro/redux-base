@@ -12,14 +12,14 @@ const mapStateToProps = state => {
 const ConnectedList = ({ articles }) => (
   <ul className="list-group list-group-flush">
     {articles.map(el => (
-      <li className="list-group-item" key={el}>
-        {el}
+      <li className="list-group-item" key={el.id}>
+        {el.title}
       </li>
     ))}
   </ul>
 );
 
-//idk why this shit is here but it always must be here 
+//idk why this shit is here but it always must be here
 // ahh aqui se connecta el componente con redux, important shiet
 const List = connect(mapStateToProps)(ConnectedList);
 

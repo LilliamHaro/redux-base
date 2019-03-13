@@ -9,7 +9,7 @@ import { ADD_ARTICLE } from '../constants/action-types';
 
 // el mero estado 
 const initialState = {
-  articles: [1,23,123,1234,123456]
+  articles: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -26,3 +26,5 @@ function rootReducer(state = initialState, action) {
 }
 
 export default rootReducer;
+
+
