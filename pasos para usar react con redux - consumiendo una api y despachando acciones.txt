@@ -1,3 +1,6 @@
+
+link del tutorial completo: https://www.valentinog.com/blog/redux/
+
 paso 1(action types)
 -crear carpetas de contantes
 -declarar consates (los nombres de las actions types) y exportarlas (ejm: export const ADD_ARTICLE = "ADD_ARTICLE";)
