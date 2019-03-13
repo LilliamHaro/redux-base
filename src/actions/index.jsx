@@ -1,5 +1,10 @@
+// paso 6
+//importar el nombre de la accion
+//crear un funcion retornando la accion(type) y el payload(data)
 import { ADD_ARTICLE } from "../constants/action-types";
 
+
+//action creators --> plain JavaScript function in charge for returning Redux actions.
 export function addArticle(payload) {
   return { type: ADD_ARTICLE, payload };
 }

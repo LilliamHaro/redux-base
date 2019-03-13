@@ -4,6 +4,9 @@
 import React from "react";
 import { connect } from "react-redux";
 
+
+//mapStateToProps --> función para proporcionar los datos del store al componente,
+// any time the store is updated, mapStateToProps will be called. 
 const mapStateToProps = state => {
   return { articles: state.articles };
 };

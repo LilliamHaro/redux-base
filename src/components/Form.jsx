@@ -1,10 +1,14 @@
-// src/js/components/Form.jsx
+// paso 7
+
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuidv1 from "uuid";
 
 import { addArticle } from "../actions/index";
 
+
+// mapDispatchToProps --> Se usa para proporcionar los actions creartors como propiedades del componente.
+// It connects redux actions to react props.
 function mapDispatchToProps(dispatch) {
     return {
         addArticle: article => dispatch(addArticle(article))

@@ -1,3 +1,3 @@
 //paso 1
-// declarar globalmente? la accion que va a desencadenar el cambio de estado  en el reducer 
+// declarar globalmente? el nombre de las acciones
 export const ADD_ARTICLE = "ADD_ARTICLE";
