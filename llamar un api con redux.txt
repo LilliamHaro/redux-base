@@ -1,5 +1,7 @@
 redux with action para llamar data de un api
 
+https://www.valentinog.com/blog/redux/
+
 ---instalaciones previas
 ---create-react-app nombreApp
 ---cd nombreApp
