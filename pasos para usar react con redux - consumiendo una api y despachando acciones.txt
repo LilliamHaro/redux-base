@@ -7,15 +7,29 @@ paso 1(action types)
 
 paso 2(reducer)
 -importar actions types
-- crear el estado
+- crear el estado como un const initialState(es un objeto) 
 -crear la funcion pura que va a ser el reducer con el estado y el actio type
--if else con los action types 
+
+function rootReducer(state = initialState, action) {
+ if(action.type == XXX ){
+	return Object.assign(
+	{},
+	 state, 
+	{ articles: state.articles.concat(action.payload)}
+       );
+ }
+ return state;
+}
+
+-exportar la funcion pura rootReducer(export default rootReducer)
 
 paso 3(store)
+-importar elementos de redux (import { createStore,  applyMiddleware, compose } from "redux";)
 -crear el store con el reducer (const store = createStore(rootReducer))
+-exportar el store (export default store)
 
 paso 4(provider)
--importar el provider y el store en el index.js principal
+-importar el provider y el store en el index.js principal (import { Provider } from "react-redux";)
 - envolver el app con el provider con el store como prop 
 ( 
   <Provider store={store}>
@@ -24,8 +38,13 @@ paso 4(provider)
 )
 
 paso 5(conectando componentes a redux)
--importar connect
+-importar connect (import { connect } from "react-redux";)
 -usar la funcion mapStaeteToProps para proporcionar los datos del store al componente
+	
+	const mapStateToProps = state => {
+  		return { articles: state.articles };
+	};
+
 -crear el componentnt con lo retornado por la funcion mapstatetoporps como parametro
 -armar el componete como siempre se hace
 -conectar el componente a redux (const List = connect(mapStateToProps)(ConnectedList);)
